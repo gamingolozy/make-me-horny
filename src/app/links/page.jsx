@@ -5,11 +5,13 @@ import Card from "@/components/card";
 
 import LinkData from "@/models/linkdata-model";
 import connectDB from "@/lib/db";
+import { connection } from "next/server";
 import Link from "next/link";
 
 export default async function LinksPage() {
+  await connection()
   await connectDB()
-  const links = await LinkData.find();
+  const links = await LinkData.find().lean();
  
  
   return (
