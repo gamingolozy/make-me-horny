@@ -1,0 +1,13 @@
+{
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.useInlineCompletions": true,
+  "tailwindCSS.emmetCompletions": true,
+  "dotnetAcquisitionExtension.enableLanguageModelTools": false,
+  "dotnetAcquisitionExtension.existingDotnetPath": [],
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggest.showWords": true
+}
