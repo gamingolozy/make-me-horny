@@ -13,6 +13,7 @@ export default async function LinksPage() {
   await connectDB()
   const links = await LinkData.find().lean();
  
+
  
   return (
     <div className=" h-dvh">
@@ -37,7 +38,12 @@ export default async function LinksPage() {
                 title={link?.title}
                 source={link?.source}
                 url={link?.url}
-                type={link?.type}></Card>
+                type={link?.type}
+                id={link?._id.toString()}
+                >
+                  
+                </Card>
+                
             );
           })}
         </div>

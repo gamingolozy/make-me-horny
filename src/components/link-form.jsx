@@ -1,6 +1,6 @@
 "use client";
 
-import FormAction from "@/actions/form-action";
+import {FormAction} from "@/actions/form-action";
 import { useActionState } from "react";
 
 export default function LinkForm() {

@@ -1,23 +1,36 @@
+import { TriangleAlert } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Hero({ hero1, hero2, href, text, variant }) {
+export default function Hero({
+  hero1,
+  hero2,
+  href,
+  text,
+  variant,
+  invert,
+  warning,
+  remoteUrl,
+  blurUrl,
+}) {
   return (
     <div className="relative w-full h-dvh snap-start snap-always  ">
       <div className="relative w-full h-full">
         <Image
           src={hero1}
           fill
-          placeholder="blur"
+          placeholder={remoteUrl ? "empty" : "blur"}
+          blurDataURL={remoteUrl ? blurUrl : undefined}
           alt="hero"
-          className="sm:block hidden"
+          className={`sm:block hidden ${invert && "invert"}`}
         />
         <Image
           src={hero2}
           fill
-          placeholder="blur"
+          placeholder={remoteUrl ? "empty" : "blur"}
+          blurDataURL={remoteUrl ? blurUrl : undefined}
           alt="hero"
-          className="sm:hidden block "
+          className={`sm:hidden block ${invert && "invert"}`}
         />
       </div>
 
@@ -32,6 +45,13 @@ export default function Hero({ hero1, hero2, href, text, variant }) {
             {text}
           </Link>
         </div>
+        {warning && (
+          <div>
+            <span className=" text-gray-400 text-[1rem] gap-[10px] uppercase tracking-[5px] font-sans flex items-center">
+              DON'T SCROLL <TriangleAlert size={16}></TriangleAlert>
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

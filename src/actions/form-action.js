@@ -2,7 +2,7 @@
 import connectDB from "@/lib/db"
 import LinkData from "@/models/linkdata-model"
 
-export default async function FormAction(previousState, formData) {
+export async function FormAction(previousState, formData) {
     try {
         const { title, url, type, source } = Object.fromEntries(formData)
         if (!title || !url) return {
@@ -27,7 +27,35 @@ export default async function FormAction(previousState, formData) {
         return {
             status: true,
             message: 'LinkData Created successfully.',
-            
+
+        }
+
+    } catch (error) {
+
+        console.log(error.message)
+        return {
+            status: false,
+            message: error.message || 'Something went wrong!'
+        }
+    }
+
+}
+
+
+
+
+export async function FormDeleteAction(id) {
+    try {
+
+        // connect database
+        await connectDB()
+
+        await LinkData.findByIdAndDelete(id)
+
+        return {
+            status: true,
+            message: 'LinkData deleted successfully.',
+
         }
 
     } catch (error) {

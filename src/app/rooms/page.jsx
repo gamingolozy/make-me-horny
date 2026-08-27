@@ -26,19 +26,19 @@ export default function Rooms() {
             src={room1}
             text={"room-1"}
             type={"desi bhabhi"}
-            href={"#"}
+            href={"/rooms/room-1"}
             variant={"bg-[linear-gradient(45deg,black,#0c038e99)]"}></RoomCard>
           <RoomCard
             src={room2}
             text={"room-2"}
             type={"pussy licking"}
-            href={"#"}
+            href={"/rooms/room-2"}
             variant={"bg-[linear-gradient(45deg,black,#0c038e99)]"}></RoomCard>
           <RoomCard
             src={room3}
             text={"room-3"}
             type={"big ass"}
-            href={"#"}
+            href={"/rooms/room-3"}
             variant={"bg-[linear-gradient(45deg,black,#0c038e99)]"}></RoomCard>
         </div>
       </div>
