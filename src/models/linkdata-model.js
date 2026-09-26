@@ -14,17 +14,6 @@ const LinkSchema = new mongoose.Schema(
             trim: true,
         },
 
-        type: {
-            type: String,
-
-            trim: true,
-        },
-
-        source: {
-            type: String,
-
-            trim: true,
-        },
     },
     {
         timestamps: true,

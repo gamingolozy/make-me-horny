@@ -3,7 +3,7 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   images: {
-     qualities: [10, 75, 100],
+    qualities: [10, 75, 100],
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,9 +14,9 @@ const nextConfig = {
         hostname: '**', // Optional: Allows any HTTP domain
       },
     ],
-      dangerouslyAllowLocalIP: true,
-    },
-    allowedDevOrigins: ['10.37.131.26']
+    dangerouslyAllowLocalIP: true,
+  },
+  allowedDevOrigins: ['10.37.131.26']
 };
 
 export default nextConfig;

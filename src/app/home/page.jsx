@@ -7,6 +7,8 @@ import heroImg5 from "@/assets/hero/hero-3-a.jpg";
 import heroImg6 from "@/assets/hero/hero-3-b.jpg";
 import heroImg7 from "@/assets/hero/hero-4-a.jpg";
 import heroImg8 from "@/assets/hero/hero-4-b.jpg";
+import heroImg9 from "@/assets/hero/hero-5-a.jpg";
+import heroImg10 from "@/assets/hero/hero-5-b.jpg";
 
 export default function Home() {
   const pages = [
@@ -28,7 +30,7 @@ export default function Home() {
       text: "horny gallery",
       hero1: heroImg5,
       hero2: heroImg6,
-      href: "#",
+      href: "/gallery",
       variant: "bg-[linear-gradient(45deg,#000000,#4635008f)]",
     },
     {
@@ -37,6 +39,13 @@ export default function Home() {
       hero2: heroImg8,
       href: "/rooms",
       variant: "bg-[linear-gradient(45deg,#000000,#000d89ad)]",
+    },
+    {
+      text: "Passwords",
+      hero1: heroImg9,
+      hero2: heroImg10,
+      href: "/passwords",
+      variant: "bg-[linear-gradient(45deg,#000000,#4a0003a3)]",
     },
     {
       text: "3",
