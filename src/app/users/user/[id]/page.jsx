@@ -1,3 +1,4 @@
+import DeleteUser from "@/components/delete-user";
 import PrivatePhotoForm from "@/components/private-photo-form";
 import User from "@/models/user-model";
 import Image from "next/image";
@@ -57,15 +58,16 @@ export default async function Page({ params }) {
               })}
             </div>
           </div>
-          <div className="flex flex-col text-wrap ">
-            <span className="text-[10px] font-bold text-gray-500 border-b  border-zinc-800">
-              COMMENT
-            </span>
-            <p className="mt-1.5 text-[16px]">{user?.comment}</p>
-          </div>
+          {user?.comment && (
+            <div className="flex flex-col text-wrap ">
+              <span className="text-[10px] font-bold text-gray-500 border-b  border-zinc-800">
+                COMMENT
+              </span>
+              <p className="mt-1.5 text-[16px]">{user?.comment}</p>
+            </div>
+          )}
         </div>
       </div>
-
 
       <PrivatePhotoForm id={user?._id.toString()}></PrivatePhotoForm>
       <div className="flex flex-wrap w-full gap-5 p-2.5">
@@ -80,6 +82,10 @@ export default async function Page({ params }) {
               alt="image"></Image>
           );
         })}
+      </div>
+
+      <div className="flex w-full p-5 justify-end items-center">
+        <DeleteUser id={user?._id.toString()}></DeleteUser>
       </div>
     </div>
   );
