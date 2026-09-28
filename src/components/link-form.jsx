@@ -21,7 +21,7 @@ export default function LinkForm() {
             Horny<span className="text-purple-500">Links</span>
           </span>
           <button
-            onClick={()=>setIsFormOpen(!isFormOpen)}
+            onClick={() => setIsFormOpen(!isFormOpen)}
             className="p-2.5 py-2 bg-purple-700 font-medium   rounded-[10px] ">
             Add Link
           </button>

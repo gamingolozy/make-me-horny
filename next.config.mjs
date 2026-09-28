@@ -16,7 +16,14 @@ const nextConfig = {
     ],
     dangerouslyAllowLocalIP: true,
   },
-  allowedDevOrigins: ['10.37.131.26']
+  allowedDevOrigins: ['10.37.131.26'],
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb', // Acceptable formats: '1mb', '500kb', or a number in bytes
+    },
+  },
+
+
 };
 
 export default nextConfig;
