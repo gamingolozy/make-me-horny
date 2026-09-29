@@ -20,8 +20,8 @@ export default function Gallery() {
           <Link className="bg-green-600 p-4  w-full text-center rounded-[10px] font-medium" href={"/stranger"}>
            stranger girl{" "}
           </Link>
-          <Link className="bg-rose-900 p-4  w-full text-center rounded-[10px] font-medium" href={"#"}>
-           masturbate{" "}
+          <Link className="bg-rose-900 p-4  w-full text-center rounded-[10px] font-medium" href={"/masturbate"}>
+           masturbate / dick{" "}
           </Link>
           <Link className="bg-pink-600 p-4  w-full text-center rounded-[10px] font-medium" href={"#"}>
            nude / sex{" "}

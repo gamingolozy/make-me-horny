@@ -1,12 +1,18 @@
+import { GetDick } from "@/actions/dick-action";
 import CountCard from "@/components/count-card";
+import DickCard from "@/components/dick-card";
+import DickForm from "@/components/dick-form";
 
-export default function Masturbate() {
+export default async function Masturbate() {
+  const data = await GetDick();
+
+  // console.log(data?.dicks?.[0]?.url)
   return (
-    <div className="flex flex-col items-center justify-center w-full h-dvh">
- <span className="mb-10 text-2xl">
-            Track Masturbate
-        </span>
-      <CountCard></CountCard>
+    <div>
+      <DickForm></DickForm>
+      <div className="columns-2 sm:columns-4 md:columns-4 max-w-300 w-full gap-5 p-2.5">
+        <DickCard data={JSON.parse(JSON.stringify(data))}></DickCard>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use server'
 import { uploadOnCloudinary } from "@/lib/cloudinary"
 import connectDB from "@/lib/db"
+import { deleteFromCloudinary } from "@/lib/deleteCloudinary"
 import User from "@/models/user-model"
 import { revalidatePath } from "next/cache"
 
@@ -115,19 +116,34 @@ export async function PrivatePhotoAction(id, privatePhoto) {
 
 
 export async function DeleteUserAction(id) {
-    try {
-        await connectDB()
+  try {
+    await connectDB();
 
-        await User.findOneAndDelete({ _id: id })
-        revalidatePath('/users')
-        return {
-            status: true,
-            message: "user deleted successfully."
-        }
-    } catch (error) {
-        return {
-            status: false,
-            message: "Something went wrong!."
-        }
+    const user = await User.findById(id);
+
+    if (!user) {
+      return {
+        status: false,
+        message: "User not found.",
+      };
     }
+
+    if (user.photo?.publicId) {
+      await deleteFromCloudinary(user.photo.publicId);
+    }
+
+    await User.findOneAndDelete({ _id: id });
+
+    revalidatePath("/users");
+
+    return {
+      status: true,
+      message: "user deleted successfully.",
+    };
+  } catch (error) {
+    return {
+      status: false,
+      message: "Something went wrong!.",
+    };
+  }
 }
