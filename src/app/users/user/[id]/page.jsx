@@ -1,10 +1,13 @@
 import DeleteUser from "@/components/delete-user";
 import PrivatePhotoForm from "@/components/private-photo-form";
+import connectDB from "@/lib/db";
 import User from "@/models/user-model";
 import Image from "next/image";
 
 export default async function Page({ params }) {
   const { id } = await params;
+
+  await connectDB()
   const user = await User.findById(id);
   console.log(user);
 
