@@ -27,7 +27,7 @@ export default function UserCard({data}) {
             <div className="flex flex-col  p-2">
               <span className="font-semibold" >{u.name}</span>
               <span className="text-gray-400">{u?.contact?.split(',')?.[0].trim()}</span>
-              <span className="text-amber-300 font" >{u?.overview?.split(',')?.[0].trim()}</span>
+              <span className="text-pink-600 font-bold" >{u?.overview?.split(',')?.[0].trim()}</span>
             </div>
           </div>
         );

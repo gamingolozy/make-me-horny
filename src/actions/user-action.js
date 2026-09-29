@@ -2,6 +2,7 @@
 import { uploadOnCloudinary } from "@/lib/cloudinary"
 import connectDB from "@/lib/db"
 import User from "@/models/user-model"
+import { revalidatePath } from "next/cache"
 
 
 // ADD USER ACTION 
@@ -89,26 +90,26 @@ export async function GetUserData() {
 
 // ADD PRIVATE PHOTO ACTION 
 export async function PrivatePhotoAction(id, privatePhoto) {
-  try {
-    await connectDB();
+    try {
+        await connectDB();
 
-    await User.findOneAndUpdate(
-      { _id: id },
-      { $push: { privatePhoto: privatePhoto } }
-    );
+        await User.findOneAndUpdate(
+            { _id: id },
+            { $push: { privatePhoto: privatePhoto } }
+        );
 
-    return {
-      status: true,
-      message: "Private Photo added successfully.",
-    };
-  } catch (error) {
-    console.error(error);
+        return {
+            status: true,
+            message: "Private Photo added successfully.",
+        };
+    } catch (error) {
+        console.error(error);
 
-    return {
-      status: false,
-      message: "Something went wrong!",
-    };
-  }
+        return {
+            status: false,
+            message: "Something went wrong!",
+        };
+    }
 }
 // DELETE USER ACTION 
 
@@ -118,6 +119,7 @@ export async function DeleteUserAction(id) {
         await connectDB()
 
         await User.findOneAndDelete({ _id: id })
+        revalidatePath('/users')
         return {
             status: true,
             message: "user deleted successfully."

@@ -87,7 +87,7 @@ export default async function Page({ params }) {
         })}
       </div>
 
-      <div className="flex w-full p-5 justify-end items-center">
+      <div className="flex w-full p-2.5 justify-end items-center">
         <DeleteUser id={user?._id.toString()}></DeleteUser>
       </div>
     </div>
