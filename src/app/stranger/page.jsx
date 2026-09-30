@@ -5,9 +5,10 @@ import StrangerForm from "@/components/stranger-form";
 import connectDB from "@/lib/db";
 
 export default async function Stranger() {
+  console.log("🔥🔥 STRANGER PAGE RUNNING");
   await connectDB();
   const data = await GetStranger();
-  console.log("Data in stranger page:", data);
+  console.log("AFTER GET STRANGER :", data);
   if (!data?.status) {
     return <AccessDeny />;
   }
