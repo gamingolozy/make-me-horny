@@ -4,6 +4,7 @@ import connectDB from "@/lib/db"
 import { deleteFromCloudinary } from "@/lib/deleteCloudinary"
 import User from "@/models/user-model"
 import { revalidatePath } from "next/cache"
+import { GetAuth } from "./auth-action"
 
 
 // ADD USER ACTION 
@@ -68,6 +69,15 @@ export async function GetUserData() {
     try {
         await connectDB()
 
+        const data = await GetAuth()
+
+        if (data?.isVerified === false) {
+            return{
+                status: false,
+                message: 'You do not have access for this page'
+            }
+        }
+
         const users = await User.find()
 
         if (!users)
@@ -116,34 +126,34 @@ export async function PrivatePhotoAction(id, privatePhoto) {
 
 
 export async function DeleteUserAction(id) {
-  try {
-    await connectDB();
+    try {
+        await connectDB();
 
-    const user = await User.findById(id);
+        const user = await User.findById(id);
 
-    if (!user) {
-      return {
-        status: false,
-        message: "User not found.",
-      };
+        if (!user) {
+            return {
+                status: false,
+                message: "User not found.",
+            };
+        }
+
+        if (user.photo?.publicId) {
+            await deleteFromCloudinary(user.photo.publicId);
+        }
+
+        await User.findOneAndDelete({ _id: id });
+
+        revalidatePath("/users");
+
+        return {
+            status: true,
+            message: "user deleted successfully.",
+        };
+    } catch (error) {
+        return {
+            status: false,
+            message: "Something went wrong!.",
+        };
     }
-
-    if (user.photo?.publicId) {
-      await deleteFromCloudinary(user.photo.publicId);
-    }
-
-    await User.findOneAndDelete({ _id: id });
-
-    revalidatePath("/users");
-
-    return {
-      status: true,
-      message: "user deleted successfully.",
-    };
-  } catch (error) {
-    return {
-      status: false,
-      message: "Something went wrong!.",
-    };
-  }
 }

@@ -1,10 +1,15 @@
 import { GetDick } from "@/actions/dick-action";
+import AccessDeny from "@/components/access-denied";
 import CountCard from "@/components/count-card";
 import DickCard from "@/components/dick-card";
 import DickForm from "@/components/dick-form";
 
 export default async function Masturbate() {
   const data = await GetDick();
+
+  if (!data?.status) {
+    return <AccessDeny />;
+  }
 
   // console.log(data?.dicks?.[0]?.url)
   return (

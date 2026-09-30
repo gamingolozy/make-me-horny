@@ -2,6 +2,7 @@
 import connectDB from "@/lib/db"
 import Dick from "@/models/dick-model"
 import { revalidatePath } from "next/cache"
+import { GetAuth } from "./auth-action"
 
 export async function DickAction(formData) {
     try {
@@ -50,6 +51,15 @@ export async function GetDick(formData) {
 
         await connectDB()
 
+        const data = await GetAuth()
+
+        if (data?.isVerified === false) {
+            return {
+                status: false,
+                message: 'You do not have access for this page'
+            }
+        }
+
         const dicks = await Dick.find()
 
 
@@ -72,28 +82,28 @@ export async function GetDick(formData) {
 
 
 export async function DeleteDick(id) {
-  try {
-    // Connect database
-    await connectDB();
+    try {
+        // Connect database
+        await connectDB();
 
-   
 
-    // Delete stranger from database
-    await Dick.findByIdAndDelete(id);
 
-    revalidatePath('/masturbate')
+        // Delete stranger from database
+        await Dick.findByIdAndDelete(id);
 
-    return {
-      status: true,
-      message: "Dick deleted",
-    };
+        revalidatePath('/masturbate')
 
-  } catch (error) {
-    console.log(error.message);
+        return {
+            status: true,
+            message: "Dick deleted",
+        };
 
-    return {
-      status: false,
-      message: error.message || "Something went wrong!",
-    };
-  }
+    } catch (error) {
+        console.log(error.message);
+
+        return {
+            status: false,
+            message: error.message || "Something went wrong!",
+        };
+    }
 }

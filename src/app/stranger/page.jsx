@@ -1,4 +1,5 @@
 import { GetStranger } from "@/actions/stranger-action";
+import AccessDeny from "@/components/access-denied";
 import StrangerCard from "@/components/stranger-card";
 import StrangerForm from "@/components/stranger-form";
 import connectDB from "@/lib/db";
@@ -6,7 +7,9 @@ import connectDB from "@/lib/db";
 export default async function Stranger() {
   await connectDB();
   const data = await GetStranger();
-  console.log(data);
+  if (!data?.status) {
+     return <AccessDeny />;
+   }
   return (
     <div>
       <StrangerForm></StrangerForm>

@@ -1,10 +1,15 @@
 import { GetUserData } from "@/actions/user-action";
+import AccessDeny from "@/components/access-denied";
 import UserCard from "@/components/user-card";
 import UserForm from "@/components/user-form";
 import { Phone } from "lucide-react";
 
 export default async function Users() {
   const data = await GetUserData();
+
+  if (!data?.status) {
+    return <AccessDeny />;
+  }
   // console.log(users)
   return (
     <div className="">
