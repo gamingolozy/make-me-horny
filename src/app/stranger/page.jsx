@@ -7,10 +7,10 @@ import connectDB from "@/lib/db";
 export default async function Stranger() {
   await connectDB();
   const data = await GetStranger();
-  console.log(data)
+  console.log("Data in stranger page:", data);
   if (!data?.status) {
-     return <AccessDeny />;
-   }
+    return <AccessDeny />;
+  }
   return (
     <div>
       <StrangerForm></StrangerForm>
