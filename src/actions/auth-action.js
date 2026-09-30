@@ -106,7 +106,10 @@ export async function GetAuth() {
                 message: "Auth record not found",
             };
         }
-
+        console.log("🔥🔥 GET AUTH RUNNING", {
+            id: auth?._id?.toString(),
+            isVerified: auth?.isVerified,
+        });
         return {
             status: true,
             isVerified: auth.isVerified,

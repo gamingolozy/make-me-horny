@@ -7,6 +7,7 @@ import connectDB from "@/lib/db";
 export default async function Stranger() {
   await connectDB();
   const data = await GetStranger();
+  console.log(data)
   if (!data?.status) {
      return <AccessDeny />;
    }
