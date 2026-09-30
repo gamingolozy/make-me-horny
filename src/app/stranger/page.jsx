@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { GetStranger } from "@/actions/stranger-action";
 import AccessDeny from "@/components/access-denied";
 import StrangerCard from "@/components/stranger-card";

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { GetDick } from "@/actions/dick-action";
 import AccessDeny from "@/components/access-denied";
 import CountCard from "@/components/count-card";

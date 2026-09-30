@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { GetUserData } from "@/actions/user-action";
 import AccessDeny from "@/components/access-denied";
 import UserCard from "@/components/user-card";
