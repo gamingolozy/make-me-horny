@@ -69,6 +69,8 @@ export async function GetStranger() {
 
         const data = await GetAuth()
 
+        console.log("🔥 STRANGER AUTH:", data);
+
         if (data?.isVerified === false) {
             return {
                 status: false,
